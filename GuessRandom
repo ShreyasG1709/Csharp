@@ -1,0 +1,59 @@
+using System;
+
+namespace ProgChallenge
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Choose a random number between 0 and 20
+            int theNumber = new Random().Next(20);
+            bool con = true;
+
+            // Print the game greeting and instructions
+            Console.WriteLine("Let's Play 'Guess the Number'!");
+            Console.WriteLine("I'm thinking of a number between 0 and 20.");
+            Console.WriteLine("Enter your guess, or -1 to give up.");
+
+            // Keep track of the number of guesses and the current user guess
+            int guess_Num = 0;
+            int guess_Count = 0;
+
+            // Use a do-while loop because we know we want it to execute at least once
+            do {
+                // Ask the user for their current guess
+                Console.WriteLine("What's your guess?");
+                string theGuess = Console.ReadLine();
+
+                // Use the TryParse method to parse the input into a number
+                bool result = Int32.TryParse(theGuess, out guess_Num);
+
+                // If the user entered something other than a number ask them again
+                if (!result) {
+                    Console.WriteLine("Not a number. Try again.");
+                }
+                else {
+                    // If they enter a -1 then they want to exit the game
+                    if (guess_Num == -1) {
+                        Console.WriteLine($"Why quit? I was thinking of {theNumber}");
+                        con = false;
+                    }
+                    else {
+                        // Increase the guess count
+                        guess_Count++;
+
+                        // If they got it right, tell them the guess count and exit
+                        if (guess_Num == theNumber) {
+                            Console.WriteLine($"You got it in {guess_Count} guesses!!");
+                            con = false;
+                        }
+                        else {
+                            // Tell them to either guess lower or higher than the previous guess
+                            Console.WriteLine("Nope, {0} than that.", guess_Num < theNumber ? "higher" : "lower");
+                        }
+                    }
+                }
+            } while(con);
+        }
+    }
+}
