@@ -49,15 +49,3 @@ public static class Calculator
         }
     }
 }
-In this program, we have defined a separate static class Calculator that contains a static method PerformArithmetic which takes two integer arguments, num1 and num2. The method performs basic arithmetic operations on these two integers and displays the results using Console.WriteLine().
-
-We call the PerformArithmetic method from the Main method after getting input from the user. Note that we don't need to create an instance of the Calculator class to call the PerformArithmetic method, as it is a static method.
-
-Using a separate class like this can be useful for organizing related functions and methods together.
-
-
-
-
-
-
-
