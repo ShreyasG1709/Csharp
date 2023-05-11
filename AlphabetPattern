@@ -1,0 +1,20 @@
+class Solution:
+
+    def find_longest_pattern(self, input):
+        # Your code goes here
+        longest = ""
+        current = ""
+        input = input.lower()
+
+        for i in range(len(input)):
+            if (i > 0 and input[i] > input[i-1]) and (ord(input[i]) - ord(input[i-1]) == 1):
+                current += input[i]
+            else:
+                if len(current) > len(longest):
+                    longest = current
+                current = input[i]
+
+        if len(current) > len(longest):
+            longest = current
+            
+        return longest if len(longest) >= 2 else ""
